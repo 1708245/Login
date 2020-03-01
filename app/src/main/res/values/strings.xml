@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Red</string>
+    <string name="booking">Booking</string>
+    <string name="beam">Beam</string>
+    <string name="chat">Chat</string>
+    <string name="feed">Feed</string>
+    <string name="profile">Profile</string>
+</resources>

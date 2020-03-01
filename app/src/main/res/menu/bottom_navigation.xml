@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_book"
+        android:icon="@drawable/ic_book_24px"
+        android:title="@string/booking"
+        />
+
+    <item
+        android:id="@+id/nav_beam"
+        android:icon="@drawable/ic_blur_circular_24px"
+        android:title="@string/beam"
+
+        />
+
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_chat_24px"
+        android:title="@string/chat"
+        />
+    <item
+        android:id="@+id/nav_feed"
+        android:icon="@drawable/ic_dashboard_24px"
+        android:title="@string/feed"
+        />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_account_circle_24px"
+        android:title="@string/profile"
+        />
+
+</menu>
