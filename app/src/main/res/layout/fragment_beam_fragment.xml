@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Beam Functionality here" />
+        android:text="Beam Functionality here"
+        android:textSize="50dp"/>
 
 </FrameLayout>

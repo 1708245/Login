@@ -1,17 +1,15 @@
 package com.example.red;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toolbar;
+
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -43,34 +41,31 @@ public class MainActivity extends AppCompatActivity {
 
         setFragment(beam_fragment);
 
-        // Code for App Icon (Action Bar)
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.app_icon_round);
-
-        //Listening the clicks on Navigation Bottom Bar
+        /*
+        Listening the clicks on Navigation Bottom Bar
+         */
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
 
-                    case R.id.nav_beam:{
+                    case R.id.nav_beam: {
                         setFragment(beam_fragment);
                         return true;
                     }
-                    case R.id.nav_book:{
+                    case R.id.nav_book: {
                         setFragment(booking_fragment);
                         return true;
                     }
-                    case R.id.nav_chat:{
+                    case R.id.nav_chat: {
                         setFragment(chat_fragment);
                         return true;
                     }
-                    case R.id.nav_feed:{
+                    case R.id.nav_feed: {
                         setFragment(feed_fragment);
                         return true;
                     }
-                    case R.id.nav_profile:{
+                    case R.id.nav_profile: {
                         setFragment(profile_fragment);
                         return true;
                     }
