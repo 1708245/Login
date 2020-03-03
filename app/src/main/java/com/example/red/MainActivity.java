@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         feed_fragment = new Feed_fragment();
         profile_fragment = new Profile_fragment();
 
-        setFragment(beam_fragment);
+        setFragment(booking_fragment);
 
         /*
         Listening the clicks on Navigation Bottom Bar
