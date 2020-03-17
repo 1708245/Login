@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home_page"></activity>
+        <activity android:name=".Register_donor_page" />
+        <activity android:name=".Register_page" />
+        <activity android:name=".Home_page" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

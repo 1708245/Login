@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "541692718714",
+    "firebase_url": "https://red-app-database.firebaseio.com",
+    "project_id": "red-app-database",
+    "storage_bucket": "red-app-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541692718714:android:9c5c02a574c8156ae815c3",
+        "android_client_info": {
+          "package_name": "com.example.red"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541692718714-01647qspadi4e6jn38181q9vjbto355m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.red",
+            "certificate_hash": "fc5bb296252bb96af1ea512928ab7707e06f7434"
+          }
+        },
+        {
+          "client_id": "541692718714-a4od4uo4gi94h8ch0iuiinc1g3tk878a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcwrbN4MlFyUY4m8IVJpPStYdTs7BMmok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541692718714-a4od4uo4gi94h8ch0iuiinc1g3tk878a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
