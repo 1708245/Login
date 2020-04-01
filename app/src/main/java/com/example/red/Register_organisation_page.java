@@ -25,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register_donor_page extends AppCompatActivity {
+public class Register_organisation_page extends AppCompatActivity {
 
     public static final String TAG = "TAG";
 
@@ -41,7 +41,7 @@ public class Register_donor_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_donor_page);
+        setContentView(R.layout.activity_register_organisation_page);
 
         mFullName = findViewById(R.id.FullNAme1);
         mEmail = findViewById(R.id.Email1);
@@ -113,7 +113,7 @@ public class Register_donor_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Register_donor_page.this, "User Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register_organisation_page.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentreference = fstore.collection("users").document(userID);
                             Map<String, Object> user = new HashMap<>();
@@ -132,7 +132,7 @@ public class Register_donor_page extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), Home_page.class));
 
                         } else {
-                            Toast.makeText(Register_donor_page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register_organisation_page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -147,4 +147,9 @@ public class Register_donor_page extends AppCompatActivity {
         ;
     }
 });}
+
+    @Override
+    public void onBackPressed(){
+
+    }
 }

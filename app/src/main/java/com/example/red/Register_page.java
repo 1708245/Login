@@ -47,19 +47,19 @@ public class Register_page extends AppCompatActivity {
         mRegisterBtn = findViewById(R.id.Register);
         mLoginBtn = findViewById(R.id.Login);
         maddress = findViewById(R.id.Address);
-        maddress2= findViewById(R.id.address2);
+        maddress2 = findViewById(R.id.address2);
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if(fAuth.getCurrentUser() !=null){
+        if (fAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), Home_page.class));
             finish();
         }
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
@@ -74,19 +74,17 @@ public class Register_page extends AppCompatActivity {
                 final String address2 = maddress2.getText().toString();
 
 
-
-
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is Required.");
                     return;
 
                 }
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password is Required.");
                     return;
 
                 }
-                if(password.length()< 6){
+                if (password.length() < 6) {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
@@ -94,23 +92,23 @@ public class Register_page extends AppCompatActivity {
 
                 // Register the user in databse
 
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Register_page.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentreference = fstore.collection("users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
-                            user.put("fName",FullName1);
-                            user.put("email",email);
-                            user.put("Date of Birth",Dateofbirth);
-                            user.put("address",address);
-                            user.put("address2",address2);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("fName", FullName1);
+                            user.put("email", email);
+                            user.put("Date of Birth", Dateofbirth);
+                            user.put("address", address);
+                            user.put("address2", address2);
                             documentreference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                                    Log.d(TAG, "onSuccess: user Profile is created for " + userID);
                                 }
                             });
                             startActivity(new Intent(getApplicationContext(), Home_page.class));
@@ -120,13 +118,17 @@ public class Register_page extends AppCompatActivity {
                         }
 
 
-
-
-                    }});
+                    }
+                });
 
 
             }
         });
-
     }
+        @Override
+        public void onBackPressed(){
+
+        }
+
+
 }

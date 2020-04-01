@@ -1,6 +1,7 @@
 package com.example.red;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,6 +24,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mEmail, mPassword;
     Button mLoginBtn, morganisationBtn,mdonor;
     TextView mButton2;
-    TextView mCreateBtn;
+    TextView mCreateBtn,forgotTextLink;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
 
@@ -83,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         mdonor=findViewById(R.id.button);
         // mButton2 = findViewById(R.id.button2);
         mCreateBtn = findViewById(R.id.Signup);
+        forgotTextLink = findViewById(R.id.forgotPassword);
 
         morganisationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         //mButton2.setOnClickListener(new View.OnClickListener() {
         // @Override
         //public void onClick(View view) {
-        //startActivity(new Intent(getApplicationContext(), Register_donor_page.class));
+        //startActivity(new Intent(getApplicationContext(), Register_organisation_page.class));
         // onclickmethod();
         //}
         //});
@@ -153,11 +158,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        forgotTextLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final EditText resetMail = new EditText(view.getContext());
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Reset Password?");
+                passwordResetDialog.setMessage("Enter your Email to receive Reset Link.");
+                passwordResetDialog.setView(resetMail);
+
+                passwordResetDialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String mail = resetMail.getText().toString();
+                        fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(MainActivity.this,"Reset Link Sent To Your Email",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MainActivity.this,"Error! Reset Link Is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+//close dialog
+                    }
+                });
+
+                passwordResetDialog.create().show();
+
+
+            }
+        });
+
 
     }
 
     private void onclickmethod1() {
-        Intent intent = new Intent(this, Register_donor_page.class);
+        Intent intent = new Intent(this, Register_organisation_page.class);
         startActivity(intent);
     }
 
@@ -175,14 +224,13 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 GoogleSignInAccount signInAcc = signInTask.getResult(ApiException.class);
-                AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAcc.getIdToken(),null);
-                startActivity(new Intent(this,Home_page.class));
-                Toast.makeText(this,"Your Google Account is Connected to our Application",Toast.LENGTH_SHORT).show();
+                AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAcc.getIdToken(), null);
+                startActivity(new Intent(this, Home_page.class));
+                Toast.makeText(this, "Your Google Account is Connected to our Application", Toast.LENGTH_SHORT).show();
             } catch (ApiException e) {
                 e.printStackTrace();
             }
         }
-
-
     }
+
 }
