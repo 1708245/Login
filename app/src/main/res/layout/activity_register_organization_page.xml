@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".Register_organisation_page">
+    tools:context=".Register_organization_page">
 
 
     <TextView
@@ -228,6 +228,7 @@
         tools:layout_editor_absoluteX="174dp"
         tools:layout_editor_absoluteY="688dp"
         tools:ignore="MissingConstraints" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

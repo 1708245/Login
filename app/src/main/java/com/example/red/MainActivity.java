@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onclickmethod1() {
-        Intent intent = new Intent(this, Register_organisation_page.class);
+        Intent intent = new Intent(this, Register_organization_page.class);
         startActivity(intent);
     }
 
@@ -214,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Register_page.class);
         startActivity(intent);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

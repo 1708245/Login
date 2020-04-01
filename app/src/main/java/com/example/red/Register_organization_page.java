@@ -1,5 +1,8 @@
 package com.example.red;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,9 +13,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register_organisation_page extends AppCompatActivity {
+public class Register_organization_page extends AppCompatActivity {
 
     public static final String TAG = "TAG";
 
@@ -41,9 +41,7 @@ public class Register_organisation_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_organisation_page);
-
-        mFullName = findViewById(R.id.FullNAme1);
+        setContentView(R.layout.activity_register_organization_page); mFullName = findViewById(R.id.FullNAme1);
         mEmail = findViewById(R.id.Email1);
         mPassword = findViewById(R.id.Password1);
         mRegisterBtn = findViewById(R.id.Register1);
@@ -113,7 +111,7 @@ public class Register_organisation_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Register_organisation_page.this, "User Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register_organization_page.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentreference = fstore.collection("users").document(userID);
                             Map<String, Object> user = new HashMap<>();
@@ -132,21 +130,21 @@ public class Register_organisation_page extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), Home_page.class));
 
                         } else {
-                            Toast.makeText(Register_organisation_page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register_organization_page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
 
                         mLogin1Btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                        });
                     }
-                });
+                })
+                ;
             }
-        })
-        ;
-    }
-});}
+        });}
 
     @Override
     public void onBackPressed(){
