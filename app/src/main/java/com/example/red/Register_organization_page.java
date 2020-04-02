@@ -69,12 +69,13 @@ public class Register_organization_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+               final  String password = mPassword.getText().toString().trim();
                 final String FullName1 = mFullName.getText().toString();
                 final String address = maddress.getText().toString();
                 final String address2 = maddress2.getText().toString();
                 final String Countyy = mcounty.getText().toString();
                 final String Postcode = mpost.getText().toString();
+
 
                 if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is Required.");
@@ -113,7 +114,7 @@ public class Register_organization_page extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(Register_organization_page.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference documentreference = fstore.collection("users").document(userID);
+                            DocumentReference documentreference = fstore.collection("organisation").document(userID);
                             Map<String, Object> user = new HashMap<>();
                             user.put("fName", FullName1);
                             user.put("email", email);
@@ -121,6 +122,7 @@ public class Register_organization_page extends AppCompatActivity {
                             user.put("address2", address2);
                             user.put("County", Countyy);
                             user.put("Postcode", Postcode);
+                            user.put("Password",password);
                             documentreference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

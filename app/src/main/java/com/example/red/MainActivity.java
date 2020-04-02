@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onclickmethod() {
-        Intent intent = new Intent(this, Register_page.class);
+        Intent intent = new Intent(this, Register_donor_page.class);
         startActivity(intent);
     }
 
