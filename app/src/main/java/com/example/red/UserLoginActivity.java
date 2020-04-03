@@ -26,7 +26,7 @@ public class UserLoginActivity extends AppCompatActivity {
 
     private EditText mEmail, mPassword;
     private Button mLogin, mRegistration;
-    private TextView forgotTextLink1;
+     TextView forgotTextLink1;
 
 
     private FirebaseAuth mAuth;
@@ -58,7 +58,15 @@ public class UserLoginActivity extends AppCompatActivity {
 
         mLogin = (Button) findViewById(R.id.Loginbutton1);
         mRegistration = (Button) findViewById(R.id.Organisation11);
-        forgotTextLink1 = findViewById(R.id.forgotPassword1);
+        forgotTextLink1 = findViewById(R.id.Forgotpasswordlink);
+
+        mRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // startActivity(new Intent(getApplicationContext(), Register_page.class));
+                onclickmethod2();
+            }
+        });
 
 
         mLogin.setOnClickListener(new View.OnClickListener() {
@@ -88,55 +96,67 @@ public class UserLoginActivity extends AppCompatActivity {
                             Toast.makeText(UserLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
-                forgotTextLink1.setOnClickListener(new View.OnClickListener() {
+
+                })
+                ;
+            }
+        });
+
+        forgotTextLink1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final EditText Resetmail1 = new EditText(view.getContext());
+                AlertDialog.Builder passwordResetDialog1 = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog1.setTitle("Reset Password?");
+                passwordResetDialog1.setMessage("Enter You Email To Receive Reset Link.");
+                passwordResetDialog1.setView(Resetmail1);
+
+                passwordResetDialog1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-
-                        final EditText resetMail = new EditText(view.getContext());
-                        AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
-                        passwordResetDialog.setTitle("Reset Password?");
-                        passwordResetDialog.setMessage("Enter your Email to receive Reset Link.");
-                        passwordResetDialog.setView(resetMail);
-
-                        passwordResetDialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String mail = Resetmail1.getText().toString();
+                        mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                String mail = resetMail.getText().toString();
-                                mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(UserLoginActivity.this,"Reset Link Sent To Your Email",Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(UserLoginActivity.this,"Error! Reset Link Is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(UserLoginActivity.this,"Reset Link Sent To Your EMail.",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(UserLoginActivity.this, "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                             }
                         });
-
-                        passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-//close dialog
-                            }
-                        });
-
-                        passwordResetDialog.create().show();
 
 
                     }
                 });
 
+
+                passwordResetDialog1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                passwordResetDialog1.create().show();
+
+
+
+
+
+
             }
         });
+
+
+
+
     }
-    @Override
+
+        @Override
         protected void onStart() {
             super.onStart();
             mAuth.addAuthStateListener(firebaseAuthListener);
@@ -146,5 +166,8 @@ public class UserLoginActivity extends AppCompatActivity {
             super.onStop();
             mAuth.removeAuthStateListener(firebaseAuthListener);
         }
-
+    public void onclickmethod2() {
+        Intent intent = new Intent(this, Register_donor_page.class);
+        startActivity(intent);
+    }
     }
