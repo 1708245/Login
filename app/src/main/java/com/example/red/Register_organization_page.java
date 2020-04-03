@@ -61,7 +61,7 @@ public class Register_organization_page extends AppCompatActivity {
         mLogin1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
             }
         });
 
@@ -139,7 +139,7 @@ public class Register_organization_page extends AppCompatActivity {
                         mLogin1Btn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
                             }
                         });
                     }

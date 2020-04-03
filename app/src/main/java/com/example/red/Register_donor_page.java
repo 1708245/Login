@@ -66,7 +66,7 @@ public class Register_donor_page extends AppCompatActivity {
             mLoginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
                 }
             });
 
