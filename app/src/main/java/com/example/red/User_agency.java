@@ -32,7 +32,7 @@ public class User_agency extends AppCompatActivity {
         morganisation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(User_agency.this, MainActivity.class);
+                Intent intent = new Intent(User_agency.this, OrganisationLoginActivity.class);
                 startActivity(intent);
                 finish();
                 return;

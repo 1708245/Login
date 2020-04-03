@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserLoginActivity"></activity>
+        <activity android:name=".OrganisationLoginActivity"></activity>
+        <activity android:name=".UserLoginActivity" />
         <activity android:name=".User_agency">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
