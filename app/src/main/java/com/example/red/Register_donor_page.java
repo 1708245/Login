@@ -60,7 +60,7 @@ public class Register_donor_page extends AppCompatActivity {
             progressBar = findViewById(R.id.progressBar);
 
             if (fAuth.getCurrentUser() != null) {
-                startActivity(new Intent(getApplicationContext(), Home_page.class));
+                startActivity(new Intent(getApplicationContext(), Userloggedin.class));
                 finish();
             }
             mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +132,7 @@ public class Register_donor_page extends AppCompatActivity {
                                         Log.d(TAG, "onSuccess: user Profile is created for " + userID);
                                     }
                                 });
-                                startActivity(new Intent(getApplicationContext(),Home_page.class));
+                                startActivity(new Intent(getApplicationContext(),Userloggedin.class));
 
                             } else {
                                 Toast.makeText(Register_donor_page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

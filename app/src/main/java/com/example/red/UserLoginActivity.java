@@ -79,7 +79,7 @@ public class UserLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(UserLoginActivity.this, Home_page.class);
+                    Intent intent = new Intent(UserLoginActivity.this, Userloggedin.class);
                     startActivity(intent);
                     finish();
                     return;
@@ -222,6 +222,10 @@ public class UserLoginActivity extends AppCompatActivity {
                 }
             }
 
+
+    }
+    @Override
+    public void onBackPressed() {
 
     }
     }

@@ -45,7 +45,7 @@ public class OrganisationLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(OrganisationLoginActivity.this, Home_page.class);
+                    Intent intent = new Intent(OrganisationLoginActivity.this, Organisationloggedin.class);
                     startActivity(intent);
                     finish();
                     return;
@@ -161,6 +161,10 @@ public class OrganisationLoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 
     }
 

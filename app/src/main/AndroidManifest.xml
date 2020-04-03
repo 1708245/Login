@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrganisationLoginActivity"></activity>
+        <activity android:name=".Organisationloggedin"></activity>
+        <activity android:name=".Userloggedin" />
+        <activity android:name=".OrganisationLoginActivity" />
         <activity android:name=".UserLoginActivity" />
         <activity android:name=".User_agency">
             <intent-filter>
@@ -21,13 +23,6 @@
         <activity android:name=".Register_donor_page" />
         <activity android:name=".Register_organization_page" />
         <activity android:name=".Home_page" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

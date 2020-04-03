@@ -55,7 +55,7 @@ public class Register_organization_page extends AppCompatActivity {
 
 
         if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), Home_page.class));
+            startActivity(new Intent(getApplicationContext(), Organisationloggedin.class));
             finish();
         }
         mLogin1Btn.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +129,7 @@ public class Register_organization_page extends AppCompatActivity {
                                     Log.d(TAG, "onSuccess: user Profile is created for " + userID);
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(), Home_page.class));
+                            startActivity(new Intent(getApplicationContext(), Organisationloggedin.class));
 
                         } else {
                             Toast.makeText(Register_organization_page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
